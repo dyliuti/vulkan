@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-const std::vector<const char*> deviceExtensions = {
+const std::vector<const char *> deviceExtensions = {
 	VK_KHR_SWAPCHAIN_EXTENSION_NAME
 };
 
@@ -29,7 +29,7 @@ struct SwapchainImage {
 	VkImageView imageView;
 };
 
-static std::vector<char> readFile(const std::string& filename)
+static std::vector<char> readFile(const std::string &filename)
 {
 	// Open stream from given file
 	// std::ios::binary tells stream to read file as binary
