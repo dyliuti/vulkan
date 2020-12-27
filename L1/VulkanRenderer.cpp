@@ -5,19 +5,25 @@
 VulkanRenderer::VulkanRenderer()
 {
 }
-
+#include <iostream>
 int VulkanRenderer::init(GLFWwindow * newWindow)
 {
 	window = newWindow;
 
 	try {
+		std::cout << "111111";
 		createInstance();
+		std::cout << "22222";
 		createDebugCallback();
+		std::cout << "333333";
 		createSurface();
 		getPhysicalDevice();
+		std::cout << "444444";
 		createLogicalDevice();
 		createSwapChain();
+		std::cout << "777777";
 		createGraphicsPipeline();
+		std::cout << "999999";
 	}
 	catch (const std::runtime_error &e) {
 		printf("ERROR: %s\n", e.what());
@@ -432,6 +438,7 @@ bool VulkanRenderer::checkValidationLayerSupport()
 	// Check if no validation layers found AND we want at least 1 layer
 	if (validationLayerCount == 0 && validationLayers.size() > 0)
 	{
+		std::cout << "validation layers is zero." << std::endl;
 		return false;
 	}
 
@@ -442,8 +449,10 @@ bool VulkanRenderer::checkValidationLayerSupport()
 	for (const auto &validationLayer : validationLayers)
 	{
 		bool hasLayer = false;
+		std::cout << "validation layers name: " << validationLayer << std::endl;
 		for (const auto &availableLayer : availableLayers)
 		{
+			std::cout << "avaliable layers name: " << availableLayer.layerName << std::endl;
 			if (strcmp(validationLayer, availableLayer.layerName) == 0)
 			{
 				hasLayer = true;
@@ -453,6 +462,7 @@ bool VulkanRenderer::checkValidationLayerSupport()
 
 		if (!hasLayer)
 		{
+			std::cout << "no validation layer" << std::endl;
 			return false;
 		}
 	}
